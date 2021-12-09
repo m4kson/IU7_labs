@@ -1,0 +1,31 @@
+CC := gcc
+CFLAGS := -std=c99 -Wall -Werror -pedantic
+OBJS := $(OBJPATH)funcs.o $(OBJPATH)main.o
+
+OBJPATH := ./out/
+INCPATH := ./inc/
+SRCPATH := ./src/
+UNITTESTS := ./unit_tests/
+
+.PHONY: clean
+
+funcs.o: $(SRCPATH)funcs.c $(INCPATH)funcs.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)funcs.c -o $(OBJPATH)funcs.o
+
+main.o: $(SRCPATH)main.c $(INCPATH)funcs.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)main.c -o $(OBJPATH)main.o
+
+check_funcs.o: $(INCPATH)funcs.h $(UNITTESTS)check_funcs.c
+	$(CC) $(CFLAGS) -c $(UNITTESTS)check_funcs.c -o $(OBJPATH)check_funcs.o
+
+unit_tests.exe: $(OBJPATH)funcs.o $(OBJPATH)check_funcs.o
+	$(CC) -o unit_tests.exe $(OBJPATH)check_funcs.o $(OBJPATH)funcs.o -lcheck
+
+sort.exe: $(OBJS)
+	$(CC) -o sort.exe $(OBJPATH)funcs.o $(OBJPATH)main.o -lcheck
+
+sort_1.exe: $(OBJPATH)check_funcs.o $(OBJPATH)funcs.o
+	$(CC) -o unit_tests.exe $(OBJPATH)funcs.o $(OBJPATH)check_funcs.o -lcheck
+
+clean:
+	rm $(OBJPATH)*.o *.exe
