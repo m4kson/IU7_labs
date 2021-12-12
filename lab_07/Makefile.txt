@@ -22,7 +22,7 @@ unit_tests.exe: $(OBJPATH)funcs.o $(OBJPATH)check_funcs.o
 	$(CC) -o unit_tests.exe $(OBJPATH)check_funcs.o $(OBJPATH)funcs.o -lcheck
 
 sort.exe: $(OBJS)
-	$(CC) -o sort.exe $(OBJPATH)funcs.o $(OBJPATH)main.o -lcheck
+	$(CC) -o sort.exe $(OBJPATH)funcs.o $(OBJPATH)main.o
 
 sort_1.exe: $(OBJPATH)check_funcs.o $(OBJPATH)funcs.o
 	$(CC) -o unit_tests.exe $(OBJPATH)funcs.o $(OBJPATH)check_funcs.o -lcheck

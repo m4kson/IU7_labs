@@ -1,0 +1,3 @@
+D:/programming/IU-7 labs/C prog labs/labs/lab_07_1_1/cmake-build-debug/CMakeFiles/lab_07_1_1.dir
+D:/programming/IU-7 labs/C prog labs/labs/lab_07_1_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/programming/IU-7 labs/C prog labs/labs/lab_07_1_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
