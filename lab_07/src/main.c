@@ -49,5 +49,6 @@ int main(int argc, char **argv)
         if (rc != FILE_OPEN_ERROR)
             fclose(input_file);
     }
+    printf("%d", rc);
     return rc;
 }

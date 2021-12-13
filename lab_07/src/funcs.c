@@ -32,7 +32,7 @@ FILE * get_check_in_file(char* in_file_name, long* file_len, int *rc)
     {
         *file_len = get_file_len(file, rc);
 
-        if (*file_len == 0)
+        if (*file_len == 0 && *rc == OK)
             *rc = EMPTY_FILE_ERROR;
 
         if (*rc == OK)
@@ -48,15 +48,13 @@ FILE * get_check_in_file(char* in_file_name, long* file_len, int *rc)
 static long get_file_len(FILE* file, int *rc)
 {
     //todo считываем целые числа пока не конец файла, их кол-во == "длине файла"
-    char buffer[STRING_MAX_LEN];
+    char buffer[STRING_MAX_LEN] = {'\0'};
     long numbers_amount = 0;
 
     while (!feof(file)) //todo сделать только чтение одной строки
     {
         fgets(buffer, STRING_MAX_LEN, file);
         numbers_amount += get_numbers_amount(buffer, rc);
-        if (numbers_amount == 0)
-            *rc = NO_NUMBERS_IN_FILE;
     }
 
     return numbers_amount;
@@ -66,12 +64,16 @@ static long get_numbers_amount(char *string, int *rc)
 {
     long numbers_amount = 0;
     long i = 0;
-    static char digits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-'};
+    static char digits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     static char symbols[] = {' ', '\0'};
+    static char signs[] = {'-', '+'};
 
     while (string[i] != '\0')
     {
-        if (strchr(digits, string[i]) == NULL && strchr(symbols, string[i]) == NULL)
+        if (strchr(digits, string[i]) == NULL && strchr(symbols, string[i]) == NULL && strchr(signs, string[i]) ==NULL)
+            *rc = BAD_FILE_CONTENT_ERROR;
+
+        if (strchr(signs, string[i]) && strchr(digits, string[i + 1]) == NULL)
             *rc = BAD_FILE_CONTENT_ERROR;
 
         if (strchr(digits, string[i]) != NULL && strchr(symbols, string[i + 1]) != NULL)

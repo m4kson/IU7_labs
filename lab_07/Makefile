@@ -5,6 +5,8 @@ OBJPATH := ./out/
 INCPATH := ./inc/
 SRCPATH := ./src/
 UNITTESTSPATH := ./unit_tests/
+GO := ./
+ARGS := in.txt out.txt f
 
 .PHONY: clean
 
@@ -19,6 +21,7 @@ $(OBJPATH)main.o: $(SRCPATH)main.c $(INCPATH)funcs.h
 
 debug : CFLAGS += -g3
 debug : app.exe
+	$(GO)app.exe $(ARGS)
 
 release : CFLAGS += -DNDEBUG -g0
 release : app.exe
@@ -28,6 +31,12 @@ unit_tests.exe: $(OBJPATH)check_funcs.o $(OBJPATH)funcs.o
 
 $(OBJPATH)check_funcs.o: $(UNITTESTSPATH)check_funcs.c $(INCPATH)funcs.h
 	$(CC) $(CFLAGS) -c $(UNITTESTSPATH)check_funcs.c -o $(OBJPATH)check_funcs.o
+
+unit_tests: app.exe unit_tests.exe
+	$(GO)unit_tests.exe
+
+run: app.exe
+	$(GO)app.exe $(ARGS)
 
 clean:
 	rm $(OBJPATH)*.o *.exe
