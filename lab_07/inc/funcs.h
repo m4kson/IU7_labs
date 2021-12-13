@@ -12,7 +12,6 @@
 #define BAD_FILE_CONTENT_ERROR -4
 #define ALLOCATE_ERROR -5
 #define EMPTY_NEW_ARR -6
-#define NO_NUMBERS_IN_FILE -7
 #define KEY_BAD_PARAMS -8
 
 #define STRING_MAX_LEN 250
@@ -61,7 +60,7 @@ void print_array(const int *data, const int *pend);
  * @param pe_src end of old array
  * @param pb_dst start of new array
  * @param pe_dst end of new array
- * @return new array length
+ * @return
  */
 int key(const int *pb_src, const int *pe_src, int **pb_dst, int **pe_dst);
 

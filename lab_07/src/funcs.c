@@ -105,7 +105,7 @@ int read_array(FILE* file, int* data, const int *pend)
 
     else
     {
-        if (data == NULL)
+        if (data == NULL || pend == NULL)
             rc = ALLOCATE_ERROR;
 
         else
