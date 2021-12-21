@@ -13,8 +13,11 @@ result of A2 * B2
 2. Normal test
 3. A has a single row
 4. A has a single column
+5. f or g = 0
 
 ##Negatives
 1. m, n, p, q = 0
 2. not valid m n p q
 3. not valid A or B
+4. not valid f or g
+
