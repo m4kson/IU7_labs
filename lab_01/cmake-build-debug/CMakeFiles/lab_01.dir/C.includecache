@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/m4ks0n/Documents/GitHub/IU7_labs/lab_01/main.c
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+
