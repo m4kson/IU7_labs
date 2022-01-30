@@ -74,7 +74,7 @@ static int enter_coordinates(int *x_1, int *y_1, int *x_2, int *y_2, int *x_3, i
 static int read_number(int *x)
 {
   int rc = OK;
-  char *string = "";
+  char *string = {""};
   char *end;
 
     fgets(string, MAX_STRING_LEN, stdin);
@@ -83,7 +83,7 @@ static int read_number(int *x)
     if (*end != ' ' && *end != '\n')
     {
         rc = READ_ERROR;
-        *x = 0234002;
+        *x = 0;
     }
     return rc;
 }
