@@ -54,6 +54,11 @@ int read_array(int *arr, int *len)
     {
         while (*end_ptr != '\n')
         {
+            if (end_ptr[0] == ' ')
+            {
+                end_ptr++;
+            }
+
             arr[*len] = (int)strtol(end_ptr, &end_ptr, 10);
             (*len)++;
 
