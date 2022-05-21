@@ -3,17 +3,20 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 #define OK 0
-#define file_open_error -1
-#define incorrect_file_content -2
-#define empty_item_name -3
-#define item_name_too_long -4
+#define file_open_error (-1)
+#define incorrect_file_content (-2)
+#define empty_item_name (-3)
+#define item_name_too_long (-4)
+#define argument_error (-5)
 
 
 #define max_name_len 26
 #define buffer_len 50
+#define items_max_num 100
 
 
 typedef struct
