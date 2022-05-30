@@ -17,6 +17,7 @@
 #define max_name_len 26
 #define buffer_len 50
 #define items_max_num 100
+#define eps 0.00000001
 
 
 typedef struct
@@ -32,7 +33,7 @@ typedef struct
  * @param arr - array of structures
  * @return exit code (0 if everything's good
  */
-int read_items(FILE* f, item* arr);
+int read_items(FILE* f, item* arr, int *item_counter);
 
 /**
  * ascending sort of array by density
@@ -45,6 +46,6 @@ void my_sort(item* arr);
  * @param arr - array of structures
  * @param prefix - filter substring
  */
-void print_information(item* arr, char* prefix);
+void print_information(item* arr, char* prefix, int item_number);
 
 #endif //LAB_06_02_MY_FILTER_H

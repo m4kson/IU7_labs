@@ -4,29 +4,31 @@ static void read_name(FILE *f, char *name, int *rc);
 static void read_weight(FILE *f, double *weight, int *rc);
 static void read_volume(FILE *f, double *volume, int *rc);
 static void read_structure(FILE *f, item *item, int *rc);
+static void print_arr_of_structures(item *arr, int item_number);
+static int comp(const item *arg1, const item *arg2);
 
-int read_items(FILE* f, item* arr)
+int read_items(FILE* f, item* arr, int *item_counter)
 {
     int rc = OK;
 
 
     if (f != NULL)
     {
-        int item_counter = 0;
+        *item_counter = 0;
         while (!feof(f))
         {
 
-            read_structure(f, &arr[item_counter], &rc);
-            item_counter++;
+            read_structure(f, &arr[*item_counter], &rc);
+            (*item_counter)++;
             if (rc != OK)
                 break;
         }
     } else  rc = file_open_error;
 
-    for (int i = 0; i < 3; i++)
-    {
-        printf("%s \n", arr[i].name);
-    }
+//    for (int i = 0; i < 3; i++)
+//    {
+//        printf("%lf \n", arr[i].weight);
+//    }
 
 
     return rc;
@@ -126,3 +128,55 @@ static void read_volume(FILE *f, double *volume, int *rc)
     }
 }
 
+void print_information(item* arr, char* prefix, int item_number)
+{
+    if (strcmp(prefix, "None") == 0)
+    {
+        qsort(arr, item_number,sizeof(item), (int(*) (const void *, const void *)) comp);
+        print_arr_of_structures(arr, item_number);
+    }
+
+    else if (strcmp(prefix, "ALL") == 0)
+    {
+        print_arr_of_structures(arr, item_number);
+    }
+
+    else
+    {
+        for (int i = 0; i < item_number; i++)
+        {
+            if (strstr(arr[i].name, prefix) == arr[i].name)
+            {
+                printf("%s\n", arr[i].name);
+                printf("%lf\n", arr[i].weight);
+                printf("%lf\n", arr[i].volume);
+            }
+        }
+    }
+}
+
+static void print_arr_of_structures(item *arr, int item_number)
+{
+    for (int i = 0; i < item_number; i++)
+    {
+        printf("%s\n", arr[i].name);
+        printf("%lf\n", arr[i].weight);
+        printf("%lf\n", arr[i].volume);
+    }
+}
+
+static int comp(const item *arg1, const item *arg2)
+{
+    int res;
+
+    if ((arg1->weight / arg1->volume - arg2->weight / arg2->volume) < eps)
+        res = 0;
+
+    else if (arg1->weight / arg1->volume - arg2->weight / arg2->volume < 0)
+        res = -1;
+
+    else
+        res = 1;
+
+    return res;
+}
