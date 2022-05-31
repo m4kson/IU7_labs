@@ -6,6 +6,7 @@ static void read_volume(FILE *f, double *volume, int *rc);
 static void read_structure(FILE *f, item *item, int *rc);
 static void print_arr_of_structures(item *arr, int item_number);
 static int comp(const item *arg1, const item *arg2);
+static void swap(item *arg1, item *arg2, int size);
 
 int read_items(FILE* f, item* arr, int *item_counter)
 {
@@ -24,12 +25,6 @@ int read_items(FILE* f, item* arr, int *item_counter)
                 break;
         }
     } else  rc = file_open_error;
-
-//    for (int i = 0; i < 3; i++)
-//    {
-//        printf("%lf \n", arr[i].weight);
-//    }
-
 
     return rc;
 }
@@ -132,7 +127,8 @@ void print_information(item* arr, char* prefix, int item_number)
 {
     if (strcmp(prefix, "None") == 0)
     {
-        qsort(arr, item_number,sizeof(item), (int(*) (const void *, const void *)) comp);
+        //qsort(arr, item_number,sizeof(item), (int(*) (const void *, const void *)) comp); //TODO разобраться с передачей функции как параметра
+        my_sort(arr, item_number, (int(*) (const void *, const void *)) comp);
         print_arr_of_structures(arr, item_number);
     }
 
@@ -169,14 +165,43 @@ static int comp(const item *arg1, const item *arg2)
 {
     int res;
 
-    if ((arg1->weight / arg1->volume - arg2->weight / arg2->volume) < eps)
+    if (fabs(arg1->weight / arg1->volume - arg2->weight / arg2->volume) < eps)
         res = 0;
 
     else if (arg1->weight / arg1->volume - arg2->weight / arg2->volume < 0)
-        res = -1;
-
-    else
         res = 1;
 
+    else
+        res = -1;
+
     return res;
+}
+
+void my_sort(item *arr, int item_number, int(*comp) (const void *, const void *))
+{
+    for (int i = 0; i < item_number; i++)
+    {
+        int flag = True;
+        for (int j = 0; j < item_number - (i + 1); j++)
+        {
+            if (comp(&arr[j], &arr[j+1]) == -1)
+            {
+                flag = False;
+                swap (&arr[j], &arr[j + 1], sizeof(item));
+            }
+        }
+        if (flag)
+        {
+            break;
+        }
+    }
+}
+
+static void swap(item *arg1, item *arg2, int size)
+{
+    char buffer[size];
+
+    memcpy(buffer, arg1, size);
+    memcpy(arg1, arg2, size);
+    memcpy(arg2, buffer, size);
 }

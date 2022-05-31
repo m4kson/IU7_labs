@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 #define OK 0
@@ -18,6 +19,8 @@
 #define buffer_len 50
 #define items_max_num 100
 #define eps 0.00000001
+#define True 1
+#define False 0
 
 
 typedef struct
@@ -35,11 +38,6 @@ typedef struct
  */
 int read_items(FILE* f, item* arr, int *item_counter);
 
-/**
- * ascending sort of array by density
- * @param arr - array of structures
- */
-void my_sort(item* arr);
 
 /**
  * print structures whose name starts with a substring from array
@@ -47,5 +45,7 @@ void my_sort(item* arr);
  * @param prefix - filter substring
  */
 void print_information(item* arr, char* prefix, int item_number);
+
+void my_sort(item *arr, int item_number, int(*comp) (const void *, const void *));
 
 #endif //LAB_06_02_MY_FILTER_H
