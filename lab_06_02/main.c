@@ -10,17 +10,32 @@ int main(int argc, char **argv)
         rc = argument_error;
     }
 
-    item arr[items_max_num];
-    FILE *f = fopen(argv[1], "r");
+    if (argc >3)
+    {
+        rc = argument_error;
+    }
 
-
-    rc = read_items(f, arr, &item_number);
     if (rc == OK)
     {
-        if (argc == 3)
+        item arr[items_max_num];
+        FILE *f = fopen(argv[1], "r");
+
+        if (f == NULL)
         {
-            print_information(arr, argv[2], item_number);
-        } else print_information(arr, "None", item_number);
+            f = fopen(strcat(argv[1], ".txt"), "r");
+        }
+
+
+        rc = read_items(f, arr, &item_number);
+        if (rc == OK)
+        {
+            if (argc == 3)
+            {
+                print_information(arr, argv[2], item_number);
+            } else print_information(arr, "None", item_number);
+        }
+
     }
+
     return rc;
 }

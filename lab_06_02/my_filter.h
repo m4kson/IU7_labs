@@ -15,7 +15,7 @@
 #define argument_error (-5)
 
 
-#define max_name_len 26
+#define max_name_len 25
 #define buffer_len 50
 #define items_max_num 100
 #define eps 0.00000001
