@@ -23,19 +23,21 @@ int take_matrix(int *row, int *column, double **data)
 
 static int take_size(int *row, int *column)
 {
-    //todo remake func, need too read as a string and check all symbols
     int rc = OK;
+    char buffer[255];
 
-    rc = scanf("Enter n: %d", row);
+    fgets(buffer, 255, stdin);
+    *row = atoi(buffer);
 
-    if (rc != 1)
+    if (*row == 0)
         rc = ENTER_ERROR;
 
     else
     {
-        rc = scanf("Enter m: %d", column);
+        fgets(buffer, 255, stdin);
+         *column = atoi(buffer);
 
-        if (rc != 1)
+        if (*column == 1)
             rc = ENTER_ERROR;
     }
 
@@ -54,4 +56,14 @@ static int take_row(double *p_row, int columns)
         *(p_row + i) = strtod(buffer, end_pointer); //todo if can't take a double retutns zero(
     }
 
+}
+
+void print_matrix(double **arr, int row, int column)
+{
+    for (int i = 0, i < row, i++)
+    {
+        for (int j = 0, j < column, j++)
+            printf("%lf ", arr[i][j]);
+        printf("\n");
+    }
 }
