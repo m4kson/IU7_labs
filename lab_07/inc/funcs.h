@@ -64,12 +64,6 @@ void print_array(const int *data, const int *pend);
  */
 int key(const int *pb_src, const int *pe_src, int **pb_dst, int **pe_dst);
 
-/**
- * bubble sort for array
- * @param p_start
- * @param p_end
- */
-void bubble_sort(int *p_start, const int *p_end);
 
 /**
  * write down sorted array in out file

@@ -1,4 +1,5 @@
 #include "../inc/funcs.h"
+#include "../inc/sort.h"
 
 int main(int argc, char **argv)
 {
@@ -24,26 +25,39 @@ int main(int argc, char **argv)
                     {
                         int *new_data, *new_pend;
                         rc = key(data, pend, &new_data, &new_pend);
+                        int new_arr_len = (int)(new_pend - new_data);
 
                         if (rc == OK)
                         {
-                            bubble_sort(new_data, new_pend);
+                            mysort(new_data, new_arr_len, sizeof(int), (int (*)(const void*, const void*))(comp_num));
                             print_array(new_data, new_pend);
                             write_arr(argv[2], new_data, new_pend);
 
                             free(new_data);
                             free(data);
                         }
+                        else
+                        {
+                            if (data != NULL)
+                                free(data);
+                            if (new_data != NULL)
+                                free(new_data);
+                        }
+
                     }
                     else
                     {
-                        bubble_sort(data, pend);
+                        mysort(data, array_len, sizeof(int), (int (*)(const void*, const void*))(comp_num));
                         print_array(data, pend);
                         write_arr(argv[2], data, pend);
 
                         free(data);
                     }
                 }
+                else
+                    if (data != NULL)
+                        free(data);
+
             }
         }
         if (rc != FILE_OPEN_ERROR)

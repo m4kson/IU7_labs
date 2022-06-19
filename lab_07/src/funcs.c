@@ -7,7 +7,6 @@ static long new_arr_size_find (const int *data, const int *pend, const int **max
 static int allocate_new_arr(int **date, long len);
 static void index_sort(int **p_max, int **p_min);
 static void fill_new_arr(int *p_max, int *p_min, int *new_data, const int *new_pend);
-static void swap(int *max, int *min);
 
 int check_args(int argc) //char** argv
 {
@@ -226,21 +225,6 @@ static void index_sort(int **p_max, int **p_min)
     }
 }
 
-void bubble_sort(int *p_start, const int *p_end)
-{
-    int *start = p_start;
-    for (int i = 0; p_start < p_end; p_start++, i++)
-        for (int *j = start;j < p_end - i - 1; j++)
-            if (*j > *(j + 1))
-               swap(j, j+1);
-}
-
-static void swap(int *max, int *min)
-{
-    int buff = *min;
-    *min = *max;
-    *max = buff;
-}
 
 void write_arr(char *file_name, int *p_start, const int *p_end)
 {

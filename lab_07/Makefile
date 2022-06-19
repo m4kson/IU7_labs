@@ -10,14 +10,21 @@ ARGS := in.txt out.txt f
 
 .PHONY: clean
 
-app.exe: $(OBJPATH)funcs.o $(OBJPATH)main.o
-	$(CC) -o app.exe $(OBJPATH)funcs.o $(OBJPATH)main.o
+app.exe: $(OBJPATH)funcs.o $(OBJPATH)main.o $(OBJPATH)sort.o
+	$(CC) -o app.exe $(OBJPATH)funcs.o $(OBJPATH)sort.o $(OBJPATH)main.o
 
 $(OBJPATH)funcs.o: $(SRCPATH)funcs.c $(INCPATH)funcs.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)funcs.c -o $(OBJPATH)funcs.o
 
-$(OBJPATH)main.o: $(SRCPATH)main.c $(INCPATH)funcs.h
+$(OBJPATH)sort.o: $(SRCPATH)sort.c $(INCPATH)sort.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)sort.c -o $(OBJPATH)sort.o
+
+$(OBJPATH)main.o: $(SRCPATH)main.c $(INCPATH)funcs.h $(INCPATH)sort.h
 	$(CC) $(CFLAGS) -c $(SRCPATH)main.c -o $(OBJPATH)main.o
+
+simple : CFLAGS := -std=c99
+simple : app.exe
+	$(GO)app.exe $(ARGS)
 
 debug : CFLAGS += -g3
 debug : app.exe
