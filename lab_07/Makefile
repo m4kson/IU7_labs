@@ -42,6 +42,15 @@ $(OBJPATH)check_funcs.o: $(UNITTESTSPATH)check_funcs.c $(INCPATH)funcs.h
 unit_tests: app.exe unit_tests.exe
 	$(GO)unit_tests.exe
 
+time_check: time_tracker.exe
+	$(GO)time_tracker.exe
+
+time_tracker.exe: $(OBJPATH)time_tracker.o $(OBJPATH)sort.o
+	$(CC) -o time_tracker.exe $(OBJPATH)time_tracker.o $(OBJPATH)sort.o
+
+$(OBJPATH)time_tracker.o: $(SRCPATH)time_tracker.c $(INCPATH)time_tracker.h
+	$(CC) $(CFLAGS) -c $(SRCPATH)time_tracker.c -o $(OBJPATH)time_tracker.o
+
 run: app.exe
 	$(GO)app.exe $(ARGS)
 
