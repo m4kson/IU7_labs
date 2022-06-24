@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/allocation.h
+stdlib.h
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/stdlib.h
+../inc/errors.h
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
+
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
+
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/matrix_transformation.h
+../inc/allocation.h
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/allocation.h
+../inc/errors.h
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
+stdio.h
+-
+
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/src/matrix_transformation.c
+../inc/matrix_transformation.h
+D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/matrix_transformation.h
+
