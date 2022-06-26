@@ -11,7 +11,11 @@ int main()
     read_matrix(&n, &m, &arrayA);
     read_matrix(&p, &q, &arrayB);
 
+    make_square(arrayA, &n, &m);
+    make_square(arrayB, &p, &q);
+
     print_matrix(arrayA, n, m);
+    printf("\n");
     print_matrix(arrayB, p, q);
 
     return 0;

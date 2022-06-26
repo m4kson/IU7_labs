@@ -1,11 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lab.dir/src/allocation.c.obj"
-  "CMakeFiles/lab.dir/src/main.c.obj"
-  "CMakeFiles/lab.dir/src/matrix_transformation.c.obj"
-  "lab.exe"
-  "lab.exe.manifest"
+  "CMakeFiles/lab.dir/src/allocation.c.o"
+  "CMakeFiles/lab.dir/src/main.c.o"
+  "CMakeFiles/lab.dir/src/matrix_transformation.c.o"
+  "lab"
   "lab.pdb"
-  "liblab.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

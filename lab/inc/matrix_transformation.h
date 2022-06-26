@@ -4,8 +4,12 @@
 #include "../inc/allocation.h"
 #include "../inc/errors.h"
 #include <stdio.h>
+#include "errors.h"
+#include <math.h>
 
 int read_matrix(int *row, int *column, double ***data);
 void print_matrix(double **data, int row, int column);
+void make_square(double **data, int *row, int *column);
+void make_equal();
 
 #endif //LAB_MATRIX_TRANSFORMATION_H
