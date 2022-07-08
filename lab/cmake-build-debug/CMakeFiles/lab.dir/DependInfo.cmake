@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/src/allocation.c" "/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/cmake-build-debug/CMakeFiles/lab.dir/src/allocation.c.o"
-  "/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/src/main.c" "/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/cmake-build-debug/CMakeFiles/lab.dir/src/main.c.o"
-  "/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/src/matrix_transformation.c" "/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/cmake-build-debug/CMakeFiles/lab.dir/src/matrix_transformation.c.o"
+  "D:/study/IU7/sem3/programming/labs/IU7_labs/lab/src/allocation.c" "D:/study/IU7/sem3/programming/labs/IU7_labs/lab/cmake-build-debug/CMakeFiles/lab.dir/src/allocation.c.obj"
+  "D:/study/IU7/sem3/programming/labs/IU7_labs/lab/src/main.c" "D:/study/IU7/sem3/programming/labs/IU7_labs/lab/cmake-build-debug/CMakeFiles/lab.dir/src/main.c.obj"
+  "D:/study/IU7/sem3/programming/labs/IU7_labs/lab/src/matrix_transformation.c" "D:/study/IU7/sem3/programming/labs/IU7_labs/lab/cmake-build-debug/CMakeFiles/lab.dir/src/matrix_transformation.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "AppleClang")
+set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH

@@ -14,6 +14,16 @@ int main()
     make_square(arrayA, &n, &m);
     make_square(arrayB, &p, &q);
 
+    if (n < p)
+    {
+        arrayA = make_equal(arrayA, &n, &m, p);
+    }
+
+    else if (p < n)
+    {
+        arrayB = make_equal(arrayB, &p, &q, n);
+    }
+
     print_matrix(arrayA, n, m);
     printf("\n");
     print_matrix(arrayB, p, q);

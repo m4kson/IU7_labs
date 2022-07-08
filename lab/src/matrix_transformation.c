@@ -8,6 +8,7 @@ static void delete_column(double ***data, int delete_num, int row, int *column);
 static int find_max_row(double **data, int row, int column);
 static int find_max_column(double **data, int row, int column);
 static double find_middle(double **data, int row, int column);
+static double find_max(double **data, int row, int column);
 
 int read_matrix(int *row, int *column, double ***data)
 {
@@ -183,7 +184,7 @@ static int find_max_column(double **data, int row, int column)
     return max_column;
 }
 
-void make_equal(double **data, int *row, int *column,  int needed_size)
+double **make_equal(double **data, int *row, int *column,  int needed_size)
 {
     double **new_data = allocate_matrix(needed_size, needed_size);
 
@@ -199,12 +200,22 @@ void make_equal(double **data, int *row, int *column,  int needed_size)
     {
         for (int j = 0; j < *column; j++)
         {
-            new_data[i][j] = find_middle(new_data, *row, j);
+            new_data[i][j] = (int) find_middle(new_data, *row, j);
         }
     }
     *row = needed_size;
 
-    //todo adding columns!
+    for (int i = 0; i < *row; i++)
+    {
+        for (int j = *column; j < needed_size; j++)
+        {
+            new_data[i][j] = find_max(new_data, i, *column);
+        }
+    }
+
+    *column = needed_size;
+
+    return new_data;
 }
 
 static double find_middle(double **data, int row, int column)
@@ -213,8 +224,20 @@ static double find_middle(double **data, int row, int column)
 
     for (int j = 0; j < row; j++)
     {
-        sum += data[column][j];
+        sum += data[j][column];
     }
 
     return sum / row;
+}
+
+static double find_max(double **data, int row, int column)
+{
+    double max = data[row][0];
+    for (int j = 0; j < column; j++)
+    {
+        if (data[row][j] > max)
+            max = data[row][j];
+    }
+
+    return max;
 }
