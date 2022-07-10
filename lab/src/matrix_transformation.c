@@ -93,6 +93,7 @@ void print_matrix(double **data, int row, int column)
 
 void make_square(double **data, int *row, int *column)
 {
+    //todo refactor funk to int, returns error code!
     int delete_num;
     if (*row > *column)
     {
@@ -267,5 +268,19 @@ double **matrix_exp(double **data, int row, int column, unsigned int pow)
     }
 
     free_matrix(new_data_tmp, row);
+    return new_data;
+}
+
+double **multiply_equal_matrix(double **data1, double **data2, int size)
+{
+    double **new_data = allocate_matrix(size, size);
+
+    for(int i = 0; i < size; i++)
+        for(int j = 0; j < size; j++)
+        {
+            new_data[i][j] = 0;
+            for(int k = 0; k < size; k++)
+                new_data[i][j] += data1[i][k] * data2[k][j];
+        }
     return new_data;
 }

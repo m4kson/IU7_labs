@@ -6,29 +6,27 @@
 
 #IncludeRegexTransform: 
 
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/allocation.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/allocation.h
 stdlib.h
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/stdlib.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/stdlib.h
 ../inc/errors.h
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
 
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
 
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/matrix_transformation.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/matrix_transformation.h
 ../inc/allocation.h
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/allocation.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/allocation.h
 ../inc/errors.h
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
 stdio.h
 -
 errors.h
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
 math.h
 -
-string.h
--
 
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/src/matrix_transformation.c
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/src/main.c
 ../inc/matrix_transformation.h
-D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/matrix_transformation.h
+/Users/m4ks0n/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/matrix_transformation.h
 
