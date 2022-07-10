@@ -25,6 +25,8 @@ errors.h
 D:/study/IU7/sem3/programming/labs/IU7_labs/lab/inc/errors.h
 math.h
 -
+string.h
+-
 
 D:/study/IU7/sem3/programming/labs/IU7_labs/lab/src/matrix_transformation.c
 ../inc/matrix_transformation.h

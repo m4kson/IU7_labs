@@ -241,3 +241,31 @@ static double find_max(double **data, int row, int column)
 
     return max;
 }
+
+double **matrix_exp(double **data, int row, int column, unsigned int pow)
+{
+    double **new_data = allocate_matrix(row, column);
+    double **new_data_tmp = allocate_matrix(row, column);
+
+    for (int i = 0; i < column; i++)
+        for (int j = 0; j < column; j++)
+            new_data[i][j] = data[i][j];
+
+    for (int q = 0; q < pow - 1; q++)
+    {
+        for(int i = 0; i < column; i++)
+            for(int j = 0; j < column; j++)
+            {
+                new_data_tmp[i][j] = 0;
+                for(int k = 0; k < column; k++)
+                    new_data_tmp[i][j] += new_data[i][k] * data[k][j];
+            }
+
+        for (int i = 0; i < column; i++)
+            for (int j = 0; j < column; j++)
+                new_data[i][j] = new_data_tmp[i][j];
+    }
+
+    free_matrix(new_data_tmp, row);
+    return new_data;
+}
